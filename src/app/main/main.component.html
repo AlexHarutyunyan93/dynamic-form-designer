@@ -1,0 +1,24 @@
+<div class="container">
+  <mat-toolbar>
+    Main
+  </mat-toolbar>
+  <button mat-button color="primary" (click)="addForm()">
+    Create new form
+  </button>
+</div>
+<div class="container">
+  <h3>My forms</h3>
+  <div class="container forms-container" *ngIf="forms.length">
+    <div *ngFor="let form of forms" mat-card-content routerLink="/edit-form/{{form.id}}">
+      <div>
+        <mat-card>
+          {{form.title}}
+          <mat-icon (click)="removeForm(form.id)" class="clear-button">clear</mat-icon>
+          <br />   <br />
+          <mat-card-subtitle>{{form.description}}</mat-card-subtitle>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="form-builder-fields">
+  <div class="top-side" >
+<!--    ///// Question if text or textarea, date  (options = false)-->
+    <mat-form-field class="question-input">
+      <input matInput placeholder="Question" (change)="saveChanges()" [(ngModel)]="field.label" />
+    </mat-form-field>
+<!--    /////Options will be if radiobutton, checkbox, dropdown-->
+    <button mat-button *ngIf="focused" [matMenuTriggerFor]="appMenu" class="menu-button">
+      <mat-icon>{{fieldTypes[field.type].icon}}</mat-icon>{{fieldTypes[field.type].name}}
+    </button>
+  </div>
+
+  <div class="options" *ngIf="field.options">
+        <mat-form-field *ngFor="let option of options; let i = index">
+          <div class="option" >
+            <!--        /////// there is a bug here /////////-->
+            <input matInput placeholder="{{i+1}} Option"
+                   (change)="saveChanges()" [(ngModel)]="field.options[option]"  />
+
+            <button *ngIf="focused" mat-button (click)="removeOption(i)">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </div>
+        </mat-form-field>
+    <button *ngIf="focused" mat-button (click)="addOption()">Add option</button>
+  </div>
+</div>
+
+<mat-menu #appMenu="matMenu" class="menu">
+  <button class="type-checker-button" (click)="changeFieldType(field.type)"
+          style="width: 280px" mat-menu-item
+          *ngFor="let field of fieldTypes">
+    <span class="material-icons">{{field.icon}}</span><span>{{field.name}}</span>
+  </button>
+</mat-menu>
+

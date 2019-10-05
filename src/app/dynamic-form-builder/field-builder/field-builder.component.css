@@ -1,0 +1,21 @@
+.question-input {
+  width: calc(100% - 280px);
+}
+.menu-button {
+  width: 280px;
+}
+.top-side {
+  padding: 0 10px;
+}
+.hr-vert {
+  border: 1px solid grey;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  padding: 0 10px;
+}
+.option {
+  display: flex;
+}

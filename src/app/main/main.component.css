@@ -1,0 +1,12 @@
+.clear-button {
+  float: right;
+}
+.clear-button:hover {
+  cursor: pointer;
+  color: red;
+  transition: 0.4s;
+}
+.forms-container>* {
+  max-width: 250px;
+  cursor: pointer;
+}

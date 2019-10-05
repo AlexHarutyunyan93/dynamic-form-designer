@@ -1,0 +1,15 @@
+<div class="view-form">
+  <mat-toolbar color="primary"></mat-toolbar>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-title>{{formState.title}}</mat-card-title>
+    <br />
+      <mat-card-subtitle>{{formState.description}}</mat-card-subtitle>
+    <br /><br />
+
+
+    <div class="view-form-fields">
+      <field-builder *ngFor="let field of formState.fields" [field]="field" [form]="form" ></field-builder>
+    </div>
+    <button type="submit" mat-button color="primary">Submit</button>
+  </form>
+</div>

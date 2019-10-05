@@ -1,0 +1,123 @@
+<div class="container">
+  <mat-toolbar>
+    <span class="fill-remaining-space"></span>
+    <span>Dynamic Form Builder</span>
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+  <button mat-stroked-button (click)="addField()">
+    Add field
+  </button>
+  <button mat-stroked-button >
+    <a routerLink="/preview-form/{{form.id}}">
+      Preview mode
+    </a>
+  </button>
+  <div class="form-builder-container">
+    <mat-form-field>
+      <input matInput placeholder="Form Name" (change)="saveChanges()" [(ngModel)]="form.title" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Description" (change)="saveChanges()" [(ngModel)]="form.description" />
+    </mat-form-field>
+
+    <div class="fields-container">
+      <div class="form">
+        <div class="fields" cdkDropList
+        #fieldsList="cdkDropList"
+        [cdkDropListData]="form.fields"
+        (cdkDropListDropped)="onDrop($event)"
+        >
+          <div cdkDrag
+               (click)="focused(i)"
+               [ngClass]="{'checked': focusedIndex === i}"
+               *ngFor="let item of form.fields; let i = index">
+            <div class="drugAndDropButton">
+              <i class="material-icons" cdkDragHandle>more_horiz</i>
+            </div>
+            <field-builder
+              [focused]="focusedIndex === i"
+              [field]="item"
+              [eLength]="form.fields.length"
+              ></field-builder>
+            <mat-divider></mat-divider>
+            <!--////// field-settings-bar....this will be visible when will be selected-->
+            <div class="field-settings-bar" *ngIf="focusedIndex === i">
+              <div>
+                <button mat-button (click)="copyField(i)">
+                  <span class="material-icons">content_copy</span>
+                </button>
+              </div>
+              <div>
+                <button mat-button (click)="removeField(i)">
+                  <span class="material-icons">delete</span>
+                </button>
+              </div>
+              <div class="hr-vert"></div>
+              <div class="slide-toggle-bar">
+                <label for="i{{i}}" class="isChecked"><span>Required</span></label>
+                <div id="i{{i}}">
+                  <mat-slide-toggle checked="{{item.required}}" (change)="required(i,$event)"></mat-slide-toggle>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--<div class="field-category-menu">-->
+<!--  <div class="field-category-icon">-->
+<!--    <span class="material-icons">short_text</span>Short text-->
+<!--  </div>-->
+<!--  <div class="field-category-icon">-->
+<!--    <span class="material-icons">subject</span> Long text-->
+<!--  </div>-->
+<!--  <hr/>-->
+<!--  <div class="field-category-icon">-->
+<!--    <span class="material-icons">radio_button_checked</span> One of the list-->
+<!--  </div>-->
+<!--  <div class="field-category-icon">-->
+<!--    <span class="material-icons">check_box</span> meny of the list-->
+<!--  </div>-->
+<!--  <div class="field-category-icon">-->
+<!--    <span class="material-icons">arrow_drop_down_circle</span> Drop down-->
+<!--  </div>-->
+<!--  <hr />-->
+<!--  <div class="field-category-icon">-->
+<!--    <span class="material-icons">cloud_upload</span> Upload file-->
+<!--  </div>-->
+<!--  <hr />-->
+<!--  <div class="field-category-icon">-->
+<!--    <span class="material-icons">date_range</span> Date-->
+<!--  </div>-->
+
+<!--</div>-->
+
+
+<!--<div class="container">-->
+<!--  <mat-form-field>-->
+<!--  <input formControlName="fullName" matInput placeholder="Question">-->
+
+<!--</mat-form-field>-->
+<!--  <mat-form-field>-->
+<!--    <textarea formControlName="fullName" matInput placeholder="textarea"></textarea>-->
+<!--  </mat-form-field>-->
+<!--  <div class="selectTypeSettings">-->
+<!--    <div class="addFieldButton" style="display: flex; flex-direction: column">-->
+<!--      <i class="large material-icons">short_text</i> Sort text-->
+<!--      <span class="material-icons">subject</span> long text-->
+<!--      <span class="material-icons">radio_button_checked</span> one of-->
+<!--      <span class="material-icons">check_box</span> meny of-->
+<!--      <span class="material-icons">arrow_drop_down_circle</span> srop down-->
+<!--      <span class="material-icons">cloud_upload</span> upload file-->
+<!--      <span class="material-icons">date_range</span> Date-->
+<!--      <span class="material-icons">delete</span> Delete-->
+<!--      <span class="material-icons">content_copy</span> Copy-->
+<!--      <span class="material-icons">more_horiz</span> dug and drop-->
+<!--      <span class="material-icons">more_vert</span> dug and drop-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

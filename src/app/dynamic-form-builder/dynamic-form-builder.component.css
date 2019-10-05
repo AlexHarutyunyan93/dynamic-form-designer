@@ -1,0 +1,45 @@
+.form-builder-container {
+  max-width: 700px;
+  margin: auto;
+}
+.form-builder-container >* {
+  width: 100%;
+}
+.drugAndDropButton {
+  display: flex;
+  justify-content: center;
+}
+.drugAndDropButton i {
+  cursor: move;
+  color: grey;
+}
+.field-category-menu {
+  width: 200px;
+  position: fixed;
+  background: white;
+  box-shadow: 0 0 8px #888888;
+  padding: 10px 0;
+}
+.field-category-menu span {
+  color: grey;
+}
+
+.field-category-menu div:hover {
+  background: silver;
+  cursor: pointer;
+}
+.field-check-button {
+  position: relative;
+  background: silver;
+}
+.field-settings-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.field-settings-bar>* {
+  margin: 0 20px;
+}
+.checked {
+  box-shadow: 0 0 8px #888888;
+}
