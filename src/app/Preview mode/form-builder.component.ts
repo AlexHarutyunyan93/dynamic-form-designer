@@ -10,14 +10,14 @@ import {ActivatedRoute} from '@angular/router';
 
 export class FormBuilderComponent implements OnInit {
   @Output() onSubmit = new EventEmitter();
-  form: FormGroup;
+  public form: FormGroup;
   public formState: FormSchema;
-  formId: string;
+  public formId: string;
   constructor(private formServices: FormArrayServices,
               private fb: FormBuilder,
               private readonly activatedRoute: ActivatedRoute) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formId = this.activatedRoute.snapshot.params['id'];
     this.formState = this.formServices.getForm(this.formId);
 

@@ -14,15 +14,15 @@ function setLocalStorage(){
 }
 
 export class FormSchema {
-  id = (Math.random()).toString();
-  title = "New Form";
-  description = "";
-  fields = [];
+  public id = (Math.random()).toString();
+  public title = "New Form";
+  public description = "";
+  public fields = [];
 }
 export class FieldSchema {
-  label = '';
-  type = 0;
-  required = false;
+  public label = '';
+  public type = 0;
+  public required = false;
 }
 
 @Injectable({
@@ -41,24 +41,24 @@ export class FormArrayServices {
     })
   }
 
-  addForm() {
+  public addForm(): void {
     this.formsArray.push(new FormSchema());
     this.$formsArray.next(this.formsArray);
     this.router.navigateByUrl(`edit-form/${this.formsArray[this.formsArray.length-1].id}`);
   }
-  addField(id: string) {
+  public addField(id: string): void {
     let index = this.formsArray.findIndex(e => e.id === id);
     this.formsArray[index].fields.push(new FieldSchema());
     this.$formsArray.next(this.formsArray);
   }
-  removeForm(removeId: string) {
+  public removeForm(removeId: string): void {
     this.formsArray = this.formsArray.filter(e => e.id !== removeId);
     this.$formsArray.next(this.formsArray);
   }
-  getAllForms() {
+  public getAllForms() {
     return this.formsArray
   }
-  getForm(id: string) {
+  public getForm(id: string) {
     if (!this.formsArray.length) {
       // TODO redirect to 404 page
     }

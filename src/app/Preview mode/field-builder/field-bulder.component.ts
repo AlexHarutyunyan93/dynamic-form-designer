@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'field-builder',
@@ -21,13 +21,8 @@ import { Component, Input, OnInit } from '@angular/core';
   </div>
   `
 })
-export class FieldBuilderComponent implements OnInit {
+export class FieldBuilderComponent {
   @Input() field:any;
   @Input() form:any;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

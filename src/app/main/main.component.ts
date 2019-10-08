@@ -15,10 +15,10 @@ export class MainComponent implements OnInit {
     this.forms = this.formServices.getAllForms();
   }
 
-  addForm(){
+  public addForm(): void {
     this.formServices.addForm();
   }
-  removeForm(index){
+  public removeForm(index): void {
    this.formServices.removeForm(index);
    this.forms = this.formServices.getAllForms();
   }

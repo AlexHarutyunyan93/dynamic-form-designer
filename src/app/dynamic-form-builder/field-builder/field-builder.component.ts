@@ -17,7 +17,7 @@ export class FieldBuilderComponent implements OnInit{
   constructor(private formServices: FormArrayServices) {
     this.fieldTypes = getFieldConfig();
   }
-  ngOnInit(){
+  ngOnInit(): void{
     if(this.field.options){
       this.options = [];
       for(let option in this.field.options){
@@ -25,7 +25,7 @@ export class FieldBuilderComponent implements OnInit{
       }
     }
   }
-  changeFieldType(type) {
+  public changeFieldType(type): void {
     this.field.type = type;
     if( 6 > this.field.type && this.field.type > 1  ) {
       if( !this.field.options ) {
@@ -41,17 +41,17 @@ export class FieldBuilderComponent implements OnInit{
     }
     this.formServices.$formsArray.next(this.formServices.formsArray);
   }
-  addOption() {
+  public addOption(): void {
     this.field.options[Object.keys(this.field.options).length] = 'Option';
     this.someConfig();
     this.formServices.$formsArray.next(this.formServices.formsArray);
   }
-  removeOption(index) {
+  public removeOption(index): void {
     delete this.field.options[index];
     this.someConfig();
     this.formServices.$formsArray.next(this.formServices.formsArray);
   }
-  someConfig(){
+  public someConfig(): void{
     let obj = {};
     let arr = [];
     let i = 0;
@@ -63,7 +63,7 @@ export class FieldBuilderComponent implements OnInit{
     this.field.options = obj;
     this.options = arr;
   }
-  saveChanges() {
+  public saveChanges(): void {
     this.formServices.$formsArray.next(this.formServices.formsArray);
   }
 }
